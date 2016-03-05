@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link rel="stylesheet" href="resources/css/basic.css"/>
+    <link rel="stylesheet" href="/webjars/bootswatch-yeti/3.3.5+4/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/webjars/bootswatch-yeti/3.3.5+4/css/bootstrap-theme.min.css"/>
+    <script src="/webjars/bootswatch-yeti/3.3.5+4/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <div layout:fragment="header"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <div layout:fragment="menu">
+                <div th:include="fragments/menu :: #menu"></div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div layout:fragment="content"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
