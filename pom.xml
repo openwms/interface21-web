@@ -11,7 +11,7 @@
 
     <groupId>io.interface21</groupId>
     <artifactId>webworms</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <name>WEB WORMS</name>
     <packaging>pom</packaging>
     <description>Interface21.io :: Web Worms</description>
@@ -61,7 +61,7 @@
         <connection>scm:git:https://github.com/openwms/interface21-web.git</connection>
         <developerConnection>scm:git:git@github.com:openwms/interface21-web.git</developerConnection>
         <url>https://github.com/openwms/interface21-web</url>
-        <tag>HEAD</tag>
+        <tag>0.1</tag>
     </scm>
 
     <repositories>
