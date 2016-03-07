@@ -126,7 +126,7 @@
     <distributionManagement>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/abraxas/labs/ameba</url>
+            <url>https://api.bintray.com/maven/openwms/github/webworms</url>
         </repository>
     </distributionManagement>
     <build>
