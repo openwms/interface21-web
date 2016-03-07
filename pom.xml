@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>io.interface21</groupId>
-    <artifactId>web</artifactId>
+    <artifactId>webworms</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>${project.artifactId}</name>
+    <name>WEB WORMS</name>
     <packaging>pom</packaging>
-    <description>Interface21.io :: Web</description>
+    <description>Interface21.io :: Web Worms</description>
     <licenses>
         <license>
             <name>Apache-2.0</name>

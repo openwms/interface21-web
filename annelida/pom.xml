@@ -4,7 +4,7 @@
 
     <parent>
         <groupId>io.interface21</groupId>
-        <artifactId>web</artifactId>
+        <artifactId>webworms</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
     <artifactId>annelida</artifactId>
