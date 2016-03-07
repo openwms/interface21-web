@@ -38,8 +38,8 @@
     </properties>
 
     <modules>
-        <module>web-template</module>
-        <module>web-anthropodia</module>
+        <module>annelida</module>
+        <module>anthropoda</module>
     </modules>
 
     <dependencyManagement>
