@@ -35,6 +35,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-release-plugin.version>2.5</maven-release-plugin.version>
+        <ameba-lib.version>1.4-SNAPSHOT</ameba-lib.version>
     </properties>
 
     <modules>
@@ -44,6 +45,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.ameba</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+            </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>web-template</artifactId>
