@@ -27,8 +27,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * A SecurityConfig.
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
- * @version 1.0
- * @since 1.0
+ * @version 1.1
+ * @since 0.1
  */
 @Configuration
 @EnableWebSecurity
@@ -52,11 +52,14 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         if (authenticationConfigurer != null) {
             authenticationConfigurer.configure(http);
         } else {
-            http.httpBasic().and()
+            http.httpBasic()
+                    .and()
                     .authorizeRequests()
                     .antMatchers("/public/**").permitAll()
                     .anyRequest().authenticated()
+                    .and().formLogin().loginPage("/public/auth/login").authenticationDetailsSource(new AuthenticationDetailsSourceWithDomain())
             ;
+
         }
     }
 }
