@@ -16,8 +16,7 @@
 package io.interface21.web.auth.app;
 
 import org.springframework.context.annotation.Import;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -39,5 +38,5 @@ import java.lang.annotation.Target;
 @Import(SecurityConfig.class)
 public @interface EnableBasicAuthentication {
 
-    Class<? extends UserDetailsService> userDetailsService() default InMemoryUserDetailsManager.class;
+    Class<? extends AuthenticationProvider>[] authenticationProviders() default {};
 }

@@ -18,18 +18,19 @@ package io.interface21.web.auth.app;
 import org.ameba.annotation.ExcludeFromScan;
 import org.ameba.app.AuthenticationConfigurer;
 import org.ameba.exception.SecurityException;
-import org.springframework.beans.BeanInstantiationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Collections;
 import java.util.List;
+
+import static java.util.Arrays.asList;
 
 /**
  * A SecurityConfig.
@@ -52,14 +53,9 @@ class SecurityConfig implements AuthenticationConfigurer {
     public AuthenticationManager authenticationManager(AuthenticationManagerBuilder auth, List<EnableBasicAuthentication> basicAuthenticationConfigurations) throws Exception {
         Collections.sort(basicAuthenticationConfigurations, AnnotationAwareOrderComparator.INSTANCE);
 
-
-        basicAuthenticationConfigurations.stream().map(EnableBasicAuthentication::userDetailsService).findFirst().ifPresent(p -> {
-            try {
-                UserDetailsService uds = context.getBean(p);
-                auth.userDetailsService(uds);
-            } catch (Exception e) {
-                throw new BeanInstantiationException(UserDetailsService.class, "Can't find or instantiate bean of configured type");
-            }
+        asList(basicAuthenticationConfigurations.stream().findFirst().get().authenticationProviders()).forEach(p -> {
+            AuthenticationProvider ap = context.getBean(p);
+            auth.authenticationProvider(ap);
         });
         return auth.build();
     }
