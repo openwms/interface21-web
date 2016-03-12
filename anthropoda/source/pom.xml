@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.interface21</groupId>
+        <artifactId>anthropoda-pom</artifactId>
+        <version>0.2-SNAPSHOT</version>
+    </parent>
+    <artifactId>anthropoda</artifactId>
+    <name>${project.artifactId}</name>
+    <description>Interface21.io :: Authentication module</description>
+
+    <properties>
+        <bootstrap.version>4.0.0-alpha.2</bootstrap.version>
+        <bootswatch-yeti.version>3.3.5+4</bootswatch-yeti.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.ameba</groupId>
+            <artifactId>ameba-lib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootswatch-yeti</artifactId>
+        </dependency>
+    </dependencies>
+</project>
