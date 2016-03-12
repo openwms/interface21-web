@@ -25,7 +25,7 @@ import java.security.Principal;
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
- * @since 1.0
+ * @since 0.1
  */
 @RestController
 public class AuthenticationController {

@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>io.interface21</groupId>
-        <artifactId>webworms</artifactId>
+        <artifactId>anthropoda-pom</artifactId>
         <version>0.2-SNAPSHOT</version>
     </parent>
-    <artifactId>annelida</artifactId>
+    <artifactId>anthropoda</artifactId>
     <name>${project.artifactId}</name>
-    <description>Interface21.io :: Annelida</description>
+    <description>Interface21.io :: Authentication module</description>
 
     <properties>
         <bootstrap.version>4.0.0-alpha.2</bootstrap.version>
@@ -18,12 +18,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.ameba</groupId>
+            <artifactId>ameba-lib</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
@@ -34,20 +38,4 @@
             <artifactId>bootswatch-yeti</artifactId>
         </dependency>
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>bootstrap</artifactId>
-                <version>${bootstrap.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>bootswatch-yeti</artifactId>
-                <version>${bootswatch-yeti.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
 </project>
