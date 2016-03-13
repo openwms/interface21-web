@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.0
  * @since 0.2
  */
-class AuthenticationDetailsSourceWithDomain implements AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> {
+public class AuthenticationDetailsSourceWithDomain implements AuthenticationDetailsSource<HttpServletRequest, WebAuthenticationDetails> {
 
     /**
      * {@inheritDoc}
