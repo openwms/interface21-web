@@ -15,8 +15,8 @@
  */
 package io.interface21.web.auth.app;
 
+import org.springframework.context.annotation.BasicAuthenticationImportSelector;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.authentication.AuthenticationProvider;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -35,8 +35,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(SecurityConfig.class)
+@Import(BasicAuthenticationImportSelector.class)
 public @interface EnableBasicAuthentication {
 
-    Class<? extends AuthenticationProvider>[] authenticationProviders() default {};
+    String PROP_AUTHENTICATION_PROVIDER = "authenticationProviderBean";
+    String authenticationProviderBean() default "";
 }

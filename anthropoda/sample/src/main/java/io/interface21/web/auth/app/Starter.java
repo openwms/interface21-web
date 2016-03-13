@@ -18,7 +18,16 @@ package io.interface21.web.auth.app;
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import java.util.Collections;
 
 /**
  * A Starter.
@@ -28,9 +37,19 @@ import org.springframework.context.annotation.ComponentScan;
  * @since 0.2
  */
 @SpringBootApplication
-@EnableBasicAuthentication
+@EnableBasicAuthentication(authenticationProviderBean = "inMemProvider")
 @ComponentScan(excludeFilters = @ComponentScan.Filter(ExcludeFromScan.class))
 class Starter {
+
+
+    public
+    @Bean
+    AuthenticationProvider inMemProvider() {
+        DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
+        dap.setPasswordEncoder(new BCryptPasswordEncoder());
+        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("Username", "Password", Collections.singletonList(new SimpleGrantedAuthority("ADMIN"))))));
+        return dap;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Starter.class, args);
