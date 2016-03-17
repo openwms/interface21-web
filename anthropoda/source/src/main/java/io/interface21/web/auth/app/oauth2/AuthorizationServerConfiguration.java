@@ -26,7 +26,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
- * @since 1.0
+ * @since 0.2
  */
 @ExcludeFromScan
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {

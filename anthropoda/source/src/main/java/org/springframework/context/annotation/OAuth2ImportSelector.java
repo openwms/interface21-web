@@ -24,7 +24,7 @@ import org.springframework.core.type.AnnotationMetadata;
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
- * @since 1.0
+ * @since 0.2
  */
 public class OAuth2ImportSelector implements ImportSelector {
 

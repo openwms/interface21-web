@@ -34,7 +34,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
- * @since 1.0
+ * @since 0.2
  */
 @SpringBootApplication
 @EnableBasicAuthentication(authenticationProviderBean = "inMemProvider")

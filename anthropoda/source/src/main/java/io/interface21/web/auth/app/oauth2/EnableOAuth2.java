@@ -29,11 +29,27 @@ import org.springframework.context.annotation.Import;
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
- * @since 1.0
+ * @since 0.2
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(BasicAuthenticationImportSelector.class)
 public @interface EnableOAuth2 {
+
+    /**
+     * Default is {@literal true} and activates the AuthorizationServer as part of the deployment unit where this annotation is put on a
+     * configuration class.
+     *
+     * @return if the AuthorizationServer is enabled or not.
+     */
+    boolean asAuthorizationServer() default true;
+
+    /**
+     * Default is {@literal true} and activates the ResourceServer as part of the deployment unit where this annotation is put on a
+     * configuration class.
+     *
+     * @return if the ResourceServer is enabled or not.
+     */
+    boolean asResourceServer() default true;
 }
