@@ -15,6 +15,8 @@
  */
 package io.interface21.web.auth.app;
 
+import java.util.Collections;
+
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,8 +29,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import java.util.Collections;
-
 /**
  * A Starter.
  *
@@ -39,7 +39,7 @@ import java.util.Collections;
 @SpringBootApplication
 @EnableBasicAuthentication(authenticationProviderBean = "inMemProvider")
 @ComponentScan(excludeFilters = @ComponentScan.Filter(ExcludeFromScan.class))
-class Starter {
+class BasicAuthenticationApplication {
 
 
     public
@@ -52,6 +52,6 @@ class Starter {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Starter.class, args);
+        SpringApplication.run(BasicAuthenticationApplication.class, args);
     }
 }
