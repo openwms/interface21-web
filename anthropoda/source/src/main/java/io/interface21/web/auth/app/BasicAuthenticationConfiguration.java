@@ -17,7 +17,6 @@ package io.interface21.web.auth.app;
 
 import org.ameba.annotation.ExcludeFromScan;
 import org.ameba.app.AuthenticationConfigurer;
-import org.ameba.exception.SecurityException;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
