@@ -16,10 +16,17 @@
 package io.interface21.web.auth.app.oauth2;
 
 import org.ameba.annotation.ExcludeFromScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 /**
  * A AuthorizationServerConfiguration.
@@ -29,23 +36,56 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
  * @since 0.2
  */
 @ExcludeFromScan
+@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        super.configure(security);
-        // TODO [openwms]: 17/03/16
+    /** We need to have an AuthenticationManager to delegate to the standard Spring Security authentication chain. */
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Value("signing-key:kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg")
+    private String signingKey;
+
+    /**
+     * Bean that is used as token converter between OAuth2 and JWT tokens. Cause of symmetric token encryption the signing key must be
+     * shared between resource and authorization server.
+     *
+     * @return The token converter
+     */
+    public
+    @Bean
+    JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+        accessTokenConverter.setSigningKey(signingKey);
+        return accessTokenConverter;
+    }
+
+    /**
+     * We want to use a JWT toke store here.
+     *
+     * @return The token store
+     */
+    public
+    @Bean
+    TokenStore tokenStore() {
+        return new JwtTokenStore(accessTokenConverter());
     }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        super.configure(clients);
-        // TODO [openwms]: 17/03/16
+        clients.inMemory().withClient("--todo--");
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * Configure the authorization server to use JWT toke store and the authentication manager.
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        super.configure(endpoints);
-        // TODO [openwms]: 17/03/16
+        endpoints
+                .tokenStore(tokenStore())
+                .authenticationManager(authenticationManager)
+                .accessTokenConverter(accessTokenConverter());
     }
 }

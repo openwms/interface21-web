@@ -17,8 +17,8 @@ package io.interface21.web.auth.app.oauth2;
 
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
 /**
  * A ResourceServerConfiguration.
@@ -28,17 +28,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  * @since 0.2
  */
 @ExcludeFromScan
+@EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        super.configure(resources);
-        // TODO [openwms]: 17/03/16
-    }
-
-    @Override
     public void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
-        // TODO [openwms]: 17/03/16
+        http
+            .authorizeRequests()
+            .antMatchers("/", "/public/**").permitAll()
+            .anyRequest().authenticated()
+        .and()
+            .formLogin()
+            .loginPage("/login").failureUrl("/login?error")
+            .permitAll();
     }
 }
