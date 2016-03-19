@@ -3,35 +3,18 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-    <title layout:title-pattern="$CONTENT_TITLE">template:header-content-footer</title>
+    <title layout:title-pattern="$CONTENT_TITLE">template:content</title>
     <link rel="stylesheet" href="/webjars/bootswatch-yeti/3.3.5+4/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/webjars/bootswatch-yeti/3.3.5+4/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/"/>
     <script src="/webjars/bootswatch-yeti/3.3.5+4/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="page-header">
-                <div layout:fragment="header">
-                    <div th:replace="fragments/header :: header"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
             <div layout:fragment="content">
                 <div th:replace="fragments/content :: content"></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-">
-                <div layout:fragment="footer">
-                    <div th:replace="fragments/footer :: footer"></div>
-                </div>
             </div>
         </div>
     </div>
