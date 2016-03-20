@@ -39,10 +39,10 @@ import org.springframework.context.annotation.Import;
 public @interface EnableBasicAuthentication {
 
     /**
-     * The Soring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
+     * The Spring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
      * used to authenticate the user.
      *
-     * @return Spring bena name as String
+     * @return Spring bean name as String
      */
     String authenticationProviderBean() default "";
 }

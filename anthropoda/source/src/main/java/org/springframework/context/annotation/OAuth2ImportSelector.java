@@ -20,6 +20,7 @@ import java.util.List;
 
 import io.interface21.web.servlet.app.oauth2.AuthorizationServerConfiguration;
 import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
+import io.interface21.web.servlet.app.oauth2.OAuth2Configuration;
 import io.interface21.web.servlet.app.oauth2.ResourceServerConfiguration;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
@@ -53,6 +54,7 @@ public class OAuth2ImportSelector implements ImportSelector {
         if (attributes.getBoolean("asAuthorizationServer")) {
             configurationClasses.add(AuthorizationServerConfiguration.class.getName());
         }
+        OAuth2Configuration.authenticationProviderBean = attributes.getString("authenticationProviderBean");
 
         return configurationClasses.toArray(new String[configurationClasses.size()]);
     }

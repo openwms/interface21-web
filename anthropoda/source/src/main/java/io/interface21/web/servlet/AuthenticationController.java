@@ -36,4 +36,9 @@ public class AuthenticationController {
     public Principal user(Principal user) {
         return user;
     }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "public/auth/login";
+    }
 }

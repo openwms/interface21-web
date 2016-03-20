@@ -71,6 +71,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         return new JwtTokenStore(accessTokenConverter());
     }
 
+    // TODO [openwms]: 20/03/16
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory().withClient("--todo--");

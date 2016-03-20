@@ -20,6 +20,7 @@ import org.ameba.app.AuthenticationConfigurer;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,6 +35,7 @@ import org.springframework.util.StringUtils;
  * @since 1.0
  */
 @ExcludeFromScan
+@Configuration
 public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapter implements AuthenticationConfigurer, BeanFactoryAware {
 
     public static String authenticationProviderBean;
@@ -47,7 +49,12 @@ public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapt
         this.beanFactory = beanFactory;
     }
 
-
+    /**
+     * {@inheritDoc}
+     * <p>
+     * If the name of the {@link AuthenticationProvider AuthenticationProvider} is defined as annotation property, this bean is assigned to
+     * the {@link org.springframework.security.authentication.AuthenticationManager AuthenticationManager}.
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) {
         if (StringUtils.hasText(authenticationProviderBean)) {
@@ -62,12 +69,16 @@ public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapt
     @Override
     public void configure(HttpSecurity http) {
         try {
-            http.httpBasic()
+            http
+                    .httpBasic()
                     .and()
                     .authorizeRequests()
                     .antMatchers("/public/**").permitAll()
                     .anyRequest().authenticated()
-                    .and().formLogin().loginPage("/public/auth/login").authenticationDetailsSource(new AuthenticationDetailsSourceWithDomain())
+                    .and()
+                    .formLogin()
+                    .loginPage("/public/auth/login")
+                    .authenticationDetailsSource(new AuthenticationDetailsSourceWithDomain())
             ;
         } catch (Exception e) {
             // TODO: 09/03/16

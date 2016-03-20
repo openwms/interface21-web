@@ -52,4 +52,12 @@ public @interface EnableOAuth2 {
      * @return if the ResourceServer is enabled or not.
      */
     boolean asResourceServer() default true;
+
+    /**
+     * The Spring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
+     * used to authenticate the user.
+     *
+     * @return Spring bean name as String
+     */
+    String authenticationProviderBean() default "";
 }
