@@ -13,10 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.auth.app;
-
-import org.springframework.context.annotation.BasicAuthenticationImportSelector;
-import org.springframework.context.annotation.Import;
+package io.interface21.web.servlet.app;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -24,9 +21,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import org.springframework.context.annotation.BasicAuthenticationImportSelector;
+import org.springframework.context.annotation.Import;
+
 /**
- * A EnableBasicAuthentication annotation on {@link org.springframework.context.annotation.Configuration Configuration}
- * classes enables basic authentication and configures basic authorization rules.
+ * A EnableBasicAuthentication annotation on {@link org.springframework.context.annotation.Configuration Configuration} classes enables
+ * basic authentication and configures basic authorization rules.
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
  * @version 1.0
@@ -38,6 +38,11 @@ import java.lang.annotation.Target;
 @Import(BasicAuthenticationImportSelector.class)
 public @interface EnableBasicAuthentication {
 
-    String PROP_AUTHENTICATION_PROVIDER = "authenticationProviderBean";
+    /**
+     * The Soring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
+     * used to authenticate the user.
+     *
+     * @return Spring bena name as String
+     */
     String authenticationProviderBean() default "";
 }

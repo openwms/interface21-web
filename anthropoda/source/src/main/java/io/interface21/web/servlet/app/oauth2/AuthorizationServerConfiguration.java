@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.auth.app.oauth2;
+package io.interface21.web.servlet.app.oauth2;
 
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.beans.factory.annotation.Autowired;

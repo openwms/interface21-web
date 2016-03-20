@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.auth.app;
+package io.interface21.web.servlet.app;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * An AuthenticationDetailsSourceWithDomain provides a {@link WebAuthenticationDetailsWithDomain

@@ -15,8 +15,8 @@
  */
 package org.springframework.context.annotation;
 
-import io.interface21.web.auth.app.BasicAuthenticationConfiguration;
-import io.interface21.web.auth.app.EnableBasicAuthentication;
+import io.interface21.web.servlet.app.BasicAuthenticationConfiguration;
+import io.interface21.web.servlet.app.EnableBasicAuthentication;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -41,7 +41,7 @@ public class BasicAuthenticationImportSelector implements ImportSelector {
                     "@%s is not present on importing class '%s' as expected",
                     annoType.getSimpleName(), importingClassMetadata.getClassName()));
         }
-        BasicAuthenticationConfiguration.authenticationProviderBean = attributes.getString(EnableBasicAuthentication.PROP_AUTHENTICATION_PROVIDER);
+        BasicAuthenticationConfiguration.authenticationProviderBean = attributes.getString("authenticationProviderBean");
         return new String[]{BasicAuthenticationConfiguration.class.getName()};
     }
 }

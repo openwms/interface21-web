@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.auth.app;
-
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
+package io.interface21.web.servlet.app;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 /**
  * A WebAuthenticationDetailsWithDomain expects an additional field called {@value #DOMAIN_NAME_PARAMETER} as part of

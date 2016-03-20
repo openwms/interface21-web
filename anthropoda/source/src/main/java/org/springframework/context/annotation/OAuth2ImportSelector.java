@@ -15,8 +15,13 @@
  */
 package org.springframework.context.annotation;
 
-import io.interface21.web.auth.app.oauth2.AuthorizationServerConfiguration;
-import io.interface21.web.auth.app.oauth2.ResourceServerConfiguration;
+import java.util.ArrayList;
+import java.util.List;
+
+import io.interface21.web.servlet.app.oauth2.AuthorizationServerConfiguration;
+import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
+import io.interface21.web.servlet.app.oauth2.ResourceServerConfiguration;
+import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
@@ -33,6 +38,22 @@ public class OAuth2ImportSelector implements ImportSelector {
      */
     @Override
     public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-        return new String[]{AuthorizationServerConfiguration.class.getName(), ResourceServerConfiguration.class.getName()};
+
+        Class<?> annoType = EnableOAuth2.class;
+        AnnotationAttributes attributes = AnnotationConfigUtils.attributesFor(importingClassMetadata, annoType);
+        if (attributes == null) {
+            throw new IllegalArgumentException(String.format(
+                    "@%s is not present on importing class '%s' as expected",
+                    annoType.getSimpleName(), importingClassMetadata.getClassName()));
+        }
+        List<String> configurationClasses = new ArrayList<>();
+        if (attributes.getBoolean("asResourceServer")) {
+            configurationClasses.add(ResourceServerConfiguration.class.getName());
+        }
+        if (attributes.getBoolean("asAuthorizationServer")) {
+            configurationClasses.add(AuthorizationServerConfiguration.class.getName());
+        }
+
+        return configurationClasses.toArray(new String[configurationClasses.size()]);
     }
 }
