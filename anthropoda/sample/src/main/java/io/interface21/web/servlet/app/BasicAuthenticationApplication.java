@@ -41,7 +41,6 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @ComponentScan(excludeFilters = @ComponentScan.Filter(ExcludeFromScan.class))
 class BasicAuthenticationApplication {
 
-
     public
     @Bean
     AuthenticationProvider inMemProvider() {
