@@ -16,7 +16,7 @@
 package io.interface21.web.servlet.app;
 
 import org.ameba.annotation.ExcludeFromScan;
-import org.ameba.app.AuthenticationConfigurer;
+import org.ameba.app.SecurityConfigurers;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -36,7 +36,7 @@ import org.springframework.util.StringUtils;
  */
 @ExcludeFromScan
 @Configuration
-public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapter implements AuthenticationConfigurer, BeanFactoryAware {
+public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapter implements SecurityConfigurers.AuthenticationManagerConfigurer, SecurityConfigurers.HttpSecurityConfigurer, BeanFactoryAware {
 
     public static String authenticationProviderBean;
     private BeanFactory beanFactory;

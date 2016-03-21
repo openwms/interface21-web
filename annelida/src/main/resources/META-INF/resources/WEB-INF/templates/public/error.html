@@ -13,10 +13,19 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <div layout:fragment="header">
+                <h2 class="bg-danger">Oops! error...</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
             <div layout:fragment="content">
-                <h2>Oops! error...</h2>
-                <p th:text="${exception.message}">The exception message...</p>
-                <p th:text="${exception.stackTrace}">The exception stackTrace...</p>
+                <span>Statuscode: <p th:text="${message}">The exception message...</p></span>
+                <span>Stacktrace: <p th:text="${stackTrace}">The exception stackTrace...</p></span>
             </div>
         </div>
     </div>
