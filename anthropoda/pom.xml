@@ -18,7 +18,8 @@
     </properties>
 
     <modules>
-        <module>sample</module>
+        <module>sample/basic-auth</module>
+        <module>sample/oauth2</module>
         <module>source</module>
     </modules>
 
