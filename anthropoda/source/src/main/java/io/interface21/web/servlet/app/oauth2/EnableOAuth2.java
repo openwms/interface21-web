@@ -21,8 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import org.springframework.context.annotation.BasicAuthenticationImportSelector;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.OAuth2ImportSelector;
 
 /**
  * A EnableOAuth2.
@@ -34,7 +34,7 @@ import org.springframework.context.annotation.Import;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import(BasicAuthenticationImportSelector.class)
+@Import(OAuth2ImportSelector.class)
 public @interface EnableOAuth2 {
 
     /**
@@ -43,7 +43,7 @@ public @interface EnableOAuth2 {
      *
      * @return if the AuthorizationServer is enabled or not.
      */
-    boolean asAuthorizationServer() default true;
+    boolean asAuthorizationServer() default false;
 
     /**
      * Default is {@literal true} and activates the ResourceServer as part of the deployment unit where this annotation is put on a
@@ -51,7 +51,7 @@ public @interface EnableOAuth2 {
      *
      * @return if the ResourceServer is enabled or not.
      */
-    boolean asResourceServer() default true;
+    boolean asResourceServer() default false;
 
     /**
      * The Spring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
