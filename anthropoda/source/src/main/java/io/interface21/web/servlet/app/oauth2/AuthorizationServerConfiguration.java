@@ -74,7 +74,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     // TODO [openwms]: 20/03/16
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("--todo--");
+        clients.inMemory().withClient("anthropoda-client")
+        .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
+        .authorities("ROLE_API_CLIENT")
+        .scopes("read", "write", "trust")
+                .resourceIds("oauth2-resource")
+                .accessTokenValiditySeconds(600)
+        ;
     }
 
     /**
