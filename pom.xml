@@ -90,6 +90,10 @@
             <id>spring-milestones</id>
             <url>http://repo.spring.io/milestone</url>
         </repository>
+        <repository>
+            <id>bintray</id>
+            <url>https://api.bintray.com/maven/abraxas/labs/ameba</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
