@@ -22,7 +22,8 @@
         <module>sample/oauth2/resourceserver</module>
         <module>sample/oauth2/authorizationserver</module>
         <module>sample/oauth2/combined</module>
-        <module>source</module>
+        <module>source/core</module>
+        <module>source/thyme</module>
     </modules>
 
     <dependencyManagement>
