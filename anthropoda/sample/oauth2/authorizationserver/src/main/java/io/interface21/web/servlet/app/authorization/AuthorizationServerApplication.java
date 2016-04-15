@@ -41,7 +41,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableAutoConfiguration
 @FilteredComponentScan
 @EnableOAuth2(asAuthorizationServer = true, authenticationProviderBean = "inMemProvider")
-class AuthorizationServerApplication {
+public class AuthorizationServerApplication {
 
     public
     @Bean

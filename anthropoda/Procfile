@@ -1,0 +1,1 @@
+web:    java -Xmx400m -Xss256k $JAVA_OPTS -Dserver.port=$PORT -Dspring.profiles.active=HEROKU-DEV -jar sample/oauth2/authorizationserver/target/authserver.jar
