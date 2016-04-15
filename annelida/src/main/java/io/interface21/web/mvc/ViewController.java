@@ -20,7 +20,7 @@ class ViewController {
      *
      * @return public/index
      */
-    @RequestMapping(value = {"/", "/index"},  method = RequestMethod.GET)
+    @RequestMapping(value = {"", "/"},  method = RequestMethod.GET)
     public String index() {
         return "public/index";
     }

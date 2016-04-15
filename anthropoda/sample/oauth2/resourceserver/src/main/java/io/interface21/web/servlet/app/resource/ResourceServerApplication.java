@@ -15,20 +15,11 @@
  */
 package io.interface21.web.servlet.app.resource;
 
-import java.util.Collections;
-
-import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
 import org.ameba.annotation.FilteredComponentScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 
 /**
  * A ResourceServerApplication.
@@ -40,9 +31,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableAutoConfiguration
 @FilteredComponentScan(basePackages = "io.interface21")
-@EnableOAuth2(asResourceServer = true, authenticationProviderBean = "inMemProvider")
+//@EnableOAuth2(asResourceServer = true, authenticationProviderBean = "inMemProvider")
+@EnableOAuth2Client
 public class ResourceServerApplication {
-
+/*
     public
     @Bean
     AuthenticationProvider inMemProvider() {
@@ -51,7 +43,7 @@ public class ResourceServerApplication {
         dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("API_CLIENT"))))));
         return dap;
     }
-
+*/
     public static void main(String[] args) {
         SpringApplication.run(ResourceServerApplication.class, args);
     }

@@ -81,6 +81,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 .withClient("type-server")
+                .secret("1a9030fbca47a5b2c28e92f19050bb77824b5ad1")
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .authorities("ROLE_API_CLIENT")
                 .scopes("read", "write", "trust")

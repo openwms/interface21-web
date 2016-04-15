@@ -35,11 +35,22 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .antMatchers("/", "/public/**").permitAll()
+            .antMatchers("/", "/public/**", "/webjars/**", "/resources/**").permitAll()
             .anyRequest().authenticated()
         .and()
             .formLogin()
-            .loginPage("/login").failureUrl("/login?error")
-            .permitAll();
+            .loginPage("/login")
+            .loginProcessingUrl("/authenticate")
+            .defaultSuccessUrl("/index")
+            .failureUrl("/login?error=1")
+            .permitAll()
+        .and()
+            .logout()
+            .permitAll()
+        .and()
+            .rememberMe()
+        .and()
+            .exceptionHandling()
+            .accessDeniedPage("/error/403");
     }
 }

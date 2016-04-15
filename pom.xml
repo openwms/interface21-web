@@ -35,7 +35,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <ameba-lib.version>1.4.1</ameba-lib.version>
+        <ameba-lib.version>1.5-SNAPSHOT</ameba-lib.version>
 
         <maven-release-plugin.version>2.5</maven-release-plugin.version>
     </properties>

@@ -20,7 +20,6 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.util.StringUtils;
 
@@ -52,7 +51,7 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter implements
 
     /**
      * {@inheritDoc}
-     */
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -75,7 +74,7 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter implements
             .exceptionHandling()
             .accessDeniedPage("/error/403");
     }
-
+     */
     /**
      * {@inheritDoc}
      */
