@@ -60,13 +60,14 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>web-template</artifactId>
+                <artifactId>annelida</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>web-anthropodia</artifactId>
+                <artifactId>anthropodia-pom</artifactId>
                 <version>${project.version}</version>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

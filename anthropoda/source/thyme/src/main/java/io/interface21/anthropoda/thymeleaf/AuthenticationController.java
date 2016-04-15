@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.servlet;
+package io.interface21.anthropoda.thymeleaf;
 
 import java.security.Principal;
 
@@ -30,9 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AuthenticationController {
 
-    public static final String ROOT_ENTRIES = "/users";
+    public static final String ROOT_ENTRY = "/user";
 
-    @RequestMapping(ROOT_ENTRIES)
+    @RequestMapping(ROOT_ENTRY)
     public Principal user(Principal user) {
         return user;
     }
