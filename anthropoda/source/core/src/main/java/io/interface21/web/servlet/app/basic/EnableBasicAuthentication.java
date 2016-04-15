@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.servlet.app;
+package io.interface21.web.servlet.app.basic;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

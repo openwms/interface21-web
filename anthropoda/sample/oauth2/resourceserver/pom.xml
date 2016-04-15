@@ -10,7 +10,7 @@
     </parent>
     <artifactId>anthropoda-oauth2-resourceserver</artifactId>
     <name>${project.artifactId}</name>
-    <description>Interface21.io :: Anthropoda sample</description>
+    <description>Interface21.io :: Anthropoda sample :: OAuth2 Standalone ResourceServer</description>
 
     <properties>
         <start-class>io.interface21.web.servlet.app.resource.ResourceServerApplication</start-class>

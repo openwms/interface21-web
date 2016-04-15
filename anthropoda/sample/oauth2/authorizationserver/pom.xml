@@ -21,10 +21,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>anthropoda</artifactId>
         </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>anthropoda-thymeleaf-login</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

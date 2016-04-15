@@ -15,8 +15,8 @@
  */
 package org.springframework.context.annotation;
 
-import io.interface21.web.servlet.app.BasicAuthenticationConfiguration;
-import io.interface21.web.servlet.app.EnableBasicAuthentication;
+import io.interface21.web.servlet.app.basic.BasicAuthenticationConfiguration;
+import io.interface21.web.servlet.app.basic.EnableBasicAuthentication;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 

@@ -15,6 +15,7 @@
  */
 package io.interface21.web.servlet.app;
 
+import io.interface21.web.servlet.app.basic.EnableBasicAuthentication;
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
