@@ -48,7 +48,7 @@ public class ServerApplication {
     AuthenticationProvider inMemProvider() {
         DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
         //dap.setPasswordEncoder(new BCryptPasswordEncoder());
-        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("Username", "Password", Collections.singletonList(new SimpleGrantedAuthority("ROLE_API_CLIENT"))))));
+        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("ROLE_API_CLIENT"))))));
         return dap;
     }
 

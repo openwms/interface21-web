@@ -34,8 +34,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <ameba-lib.version>1.4.1</ameba-lib.version>
+
         <maven-release-plugin.version>2.5</maven-release-plugin.version>
-        <ameba-lib.version>1.4-SNAPSHOT</ameba-lib.version>
     </properties>
 
     <modules>
@@ -49,6 +51,12 @@
                 <groupId>org.ameba</groupId>
                 <artifactId>ameba-lib</artifactId>
                 <version>${ameba-lib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ameba</groupId>
+                <artifactId>ameba-lib</artifactId>
+                <version>${ameba-lib.version}</version>
+                <type>test-jar</type>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

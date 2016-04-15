@@ -41,19 +41,18 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableAutoConfiguration
 @FilteredComponentScan
 @EnableOAuth2(asAuthorizationServer = true, authenticationProviderBean = "inMemProvider")
-public class AuthorizationServerApplication {
+class AuthorizationServerApplication {
 
     public
     @Bean
     AuthenticationProvider inMemProvider() {
         DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
         dap.setPasswordEncoder(new BCryptPasswordEncoder());
-        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("Username", "Password", Collections.singletonList(new SimpleGrantedAuthority("ADMIN"))))));
+        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("ADMIN"))))));
         return dap;
     }
 
     public static void main(String[] args) {
         SpringApplication.run(AuthorizationServerApplication.class, args);
     }
-
 }

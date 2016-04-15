@@ -71,13 +71,19 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         return new JwtTokenStore(accessTokenConverter());
     }
 
-    // TODO [openwms]: 20/03/16
+    /**
+     * Configures the client statically.
+     *
+     * @param clients The configurer
+     * @throws Exception if any errors
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("anthropoda-client")
-        .authorizedGrantTypes("password", "authorization_code", "refresh_token", "implicit")
-        .authorities("ROLE_API_CLIENT")
-        .scopes("read", "write", "trust")
+        clients.inMemory()
+                .withClient("type-server")
+                .authorizedGrantTypes("authorization_code", "refresh_token")
+                .authorities("ROLE_API_CLIENT")
+                .scopes("read", "write", "trust")
                 .resourceIds("oauth2-resource")
                 .accessTokenValiditySeconds(600)
         ;
