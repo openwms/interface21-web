@@ -92,7 +92,7 @@
         </repository>
         <repository>
             <id>bintray</id>
-            <url>https://api.bintray.com/maven/abraxas/labs/ameba</url>
+            <url>https://dl.bintray.com/abraxas/labs</url>
         </repository>
     </repositories>
     <pluginRepositories>
