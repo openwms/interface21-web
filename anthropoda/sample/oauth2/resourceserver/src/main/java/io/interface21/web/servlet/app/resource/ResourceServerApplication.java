@@ -15,11 +15,24 @@
  */
 package io.interface21.web.servlet.app.resource;
 
+import java.util.Collections;
+
+import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
 import org.ameba.annotation.FilteredComponentScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
  * A ResourceServerApplication.
@@ -31,21 +44,49 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @Configuration
 @EnableAutoConfiguration
 @FilteredComponentScan(basePackages = "io.interface21")
-//@EnableOAuth2(asResourceServer = true, authenticationProviderBean = "inMemProvider")
+@EnableOAuth2(asResourceServer = true, authenticationProviderBean = "inMemProvider")
 @EnableOAuth2Client
+//@EnableWebSecurity
 public class ResourceServerApplication {
-/*
+
+    @Value("signing-key:kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg")
+    private String signingKey;
+
+    /**
+     * Bean that is used as token converter between OAuth2 and JWT tokens. Cause of symmetric token encryption the signing key must be
+     * shared between resource and authorization server.
+     *
+     * @return The token converter
+     */
+    public
+    @Bean
+    JwtAccessTokenConverter accessTokenConverter() {
+        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+        accessTokenConverter.setSigningKey(signingKey);
+        return accessTokenConverter;
+    }
+
+    /**
+     * We want to use a JWT toke store here.
+     *
+     * @return The token store
+     */
+    public
+    @Bean
+    TokenStore tokenStore() {
+        return new JwtTokenStore(accessTokenConverter());
+    }
+
     public
     @Bean
     AuthenticationProvider inMemProvider() {
         DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
-        dap.setPasswordEncoder(new BCryptPasswordEncoder());
-        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("API_CLIENT"))))));
+        //dap.setPasswordEncoder(new BCryptPasswordEncoder());
+        dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("ROLE_API_CLIENT"))))));
         return dap;
     }
-*/
+
     public static void main(String[] args) {
         SpringApplication.run(ResourceServerApplication.class, args);
     }
-
 }

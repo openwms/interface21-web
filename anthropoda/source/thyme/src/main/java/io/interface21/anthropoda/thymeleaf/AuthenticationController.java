@@ -17,8 +17,8 @@ package io.interface21.anthropoda.thymeleaf;
 
 import java.security.Principal;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * A AuthenticationController.
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @since 0.1
  */
-@RestController
+@Controller
 public class AuthenticationController {
 
     public static final String ROOT_ENTRY = "/user";

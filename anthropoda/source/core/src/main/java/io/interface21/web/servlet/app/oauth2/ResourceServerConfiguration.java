@@ -16,9 +16,13 @@
 package io.interface21.web.servlet.app.oauth2;
 
 import org.ameba.annotation.ExcludeFromScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
+import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
 /**
  * A ResourceServerConfiguration.
@@ -31,11 +35,28 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 @EnableResourceServer
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
+    public
+    @Bean
+    ResourceServerTokenServices remoteTokenServices() {
+        RemoteTokenServices rts = new RemoteTokenServices();
+        rts.setClientId("type-server");
+        rts.setClientSecret("1a9030fbca47a5b2c28e92f19050bb77824b5ad1");
+        rts.setCheckTokenEndpointUrl("http://localhost:8083/oauth/check_token");
+        return rts;
+    }
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+        resources.resourceId("oauth2-resource");
+        resources.tokenServices(remoteTokenServices());
+    }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
             .antMatchers("/", "/public/**", "/webjars/**", "/resources/**").permitAll()
+            .antMatchers("/**").access("#oauth2.hasScope('ROLE_API_CLIENT')")
             .anyRequest().authenticated()
         .and()
             .formLogin()
@@ -46,11 +67,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
             .permitAll()
         .and()
             .logout()
+            .logoutSuccessUrl("/login")
             .permitAll()
         .and()
             .rememberMe()
         .and()
             .exceptionHandling()
-            .accessDeniedPage("/error/403");
-    }
+            .accessDeniedPage("/error/403")
+    ;}
 }
