@@ -18,12 +18,15 @@ package org.springframework.context.annotation;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.interface21.web.servlet.app.oauth2.AuthenticationProviderConfiguration;
 import io.interface21.web.servlet.app.oauth2.AuthorizationServerConfiguration;
 import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
 import io.interface21.web.servlet.app.oauth2.OAuth2Configuration;
+import io.interface21.web.servlet.app.oauth2.OperationMode;
 import io.interface21.web.servlet.app.oauth2.ResourceServerConfiguration;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.util.Assert;
 
 /**
  * A OAuth2ImportSelector enables essential OAuth2 configuration based on the annotation metadata.
@@ -48,10 +51,19 @@ public class OAuth2ImportSelector implements ImportSelector {
                     annoType.getSimpleName(), importingClassMetadata.getClassName()));
         }
         List<String> configurationClasses = new ArrayList<>();
-        if (attributes.getBoolean("asResourceServer")) {
+        if (attributes.getEnum("mode") == OperationMode.COMBINED) {
             configurationClasses.add(ResourceServerConfiguration.class.getName());
+            configurationClasses.add(AuthorizationServerConfiguration.class.getName());
         }
-        if (attributes.getBoolean("asAuthorizationServer")) {
+        if (attributes.getEnum("mode") == OperationMode.RESOURCES) {
+            configurationClasses.add(ResourceServerConfiguration.class.getName());
+
+            String authenticationUrl = attributes.getString("authenticationUrl");
+            Assert.hasText(authenticationUrl, "Standalone resource servers need to have an authentication endpoint configured, property authenticationUrl");
+            AuthenticationProviderConfiguration.authenticationUrl = authenticationUrl;
+            configurationClasses.add(AuthenticationProviderConfiguration.class.getName());
+        }
+        if (attributes.getEnum("mode") == OperationMode.AUTHORIZATIONS) {
             configurationClasses.add(AuthorizationServerConfiguration.class.getName());
         }
         configurationClasses.add(OAuth2Configuration.class.getName());

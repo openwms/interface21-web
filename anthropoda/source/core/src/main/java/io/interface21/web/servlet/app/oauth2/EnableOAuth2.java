@@ -38,20 +38,25 @@ import org.springframework.context.annotation.OAuth2ImportSelector;
 public @interface EnableOAuth2 {
 
     /**
-     * Default is {@literal true} and activates the AuthorizationServer as part of the deployment unit where this annotation is put on a
-     * configuration class.
+     * The modes describes the role of this part of application. Default is {@code OperationMode.COMBINED}.
      *
-     * @return if the AuthorizationServer is enabled or not.
+     * <ul>
+     *     <li>COMBINED: The application acts as OAuth2 resource server and authorization server</li>
+     *     <li>RESOURCES: The application only acts as OAuth2 resource server</li>
+     *     <li>AUTHORIZATIONS: The application only acts as OAuth2 authorization server</li>
+     * </ul>
+     *
+     * @return The mode
      */
-    boolean asAuthorizationServer() default false;
+    OperationMode mode() default OperationMode.COMBINED;
 
     /**
-     * Default is {@literal true} and activates the ResourceServer as part of the deployment unit where this annotation is put on a
-     * configuration class.
+     * Only necessary in case of standalone resource server mode {@code OperationMode.RESOURCES}. Used as authentication endpoint url of
+     * the authentication server.
      *
-     * @return if the ResourceServer is enabled or not.
+     * @return The authentication endpoint url
      */
-    boolean asResourceServer() default false;
+    String authenticationUrl() default "";
 
     /**
      * The Spring bean name of the {@link org.springframework.security.authentication.AuthenticationProvider AuthenticationProvider} that is
