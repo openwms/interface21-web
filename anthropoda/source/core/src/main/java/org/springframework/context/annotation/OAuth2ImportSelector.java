@@ -54,6 +54,7 @@ public class OAuth2ImportSelector implements ImportSelector {
         if (attributes.getEnum("mode") == OperationMode.COMBINED) {
             configurationClasses.add(ResourceServerConfiguration.class.getName());
             configurationClasses.add(AuthorizationServerConfiguration.class.getName());
+            OAuth2Configuration.authenticationProviderBean = attributes.getString("authenticationProviderBean");
         }
         if (attributes.getEnum("mode") == OperationMode.RESOURCES) {
             configurationClasses.add(ResourceServerConfiguration.class.getName());
@@ -61,13 +62,14 @@ public class OAuth2ImportSelector implements ImportSelector {
             String authenticationUrl = attributes.getString("authenticationUrl");
             Assert.hasText(authenticationUrl, "Standalone resource servers need to have an authentication endpoint configured, property authenticationUrl");
             AuthenticationProviderConfiguration.authenticationUrl = authenticationUrl;
+            OAuth2Configuration.authenticationProviderBean = "httpAuthenticationProvider";
             configurationClasses.add(AuthenticationProviderConfiguration.class.getName());
         }
         if (attributes.getEnum("mode") == OperationMode.AUTHORIZATIONS) {
             configurationClasses.add(AuthorizationServerConfiguration.class.getName());
+            OAuth2Configuration.authenticationProviderBean = attributes.getString("authenticationProviderBean");
         }
         configurationClasses.add(OAuth2Configuration.class.getName());
-        OAuth2Configuration.authenticationProviderBean = attributes.getString("authenticationProviderBean");
         return configurationClasses.toArray(new String[configurationClasses.size()]);
     }
 }

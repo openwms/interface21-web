@@ -44,6 +44,11 @@ class HttpAuthenticationProvider extends AbstractUserDetailsAuthenticationProvid
         this.authenticationDelegate = authenticationDelegate;
     }
 
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return true;
+    }
+
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }

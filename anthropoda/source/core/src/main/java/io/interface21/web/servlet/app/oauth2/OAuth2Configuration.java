@@ -15,11 +15,16 @@
  */
 package io.interface21.web.servlet.app.oauth2;
 
+import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.util.StringUtils;
 
@@ -30,24 +35,47 @@ import org.springframework.util.StringUtils;
  * @version 1.0
  * @since 1.0
  */
+@ExcludeFromScan
+@Configuration
+@EnableWebSecurity
+//@DependsOn("httpAuthenticationProvider")
 public class OAuth2Configuration extends WebSecurityConfigurerAdapter implements BeanFactoryAware {
 
     public static String authenticationProviderBean;
     private BeanFactory beanFactory;
 
-    /**
-     * {@inheritDoc}
-     * <p>
-     * If the name of the {@link AuthenticationProvider AuthenticationProvider} is defined as annotation property, this bean is assigned to
-     * the {@link org.springframework.security.authentication.AuthenticationManager AuthenticationManager}.
-     */
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) {
+    @Autowired
+    public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         if (StringUtils.hasText(authenticationProviderBean)) {
             AuthenticationProvider ap = beanFactory.getBean(authenticationProviderBean, AuthenticationProvider.class);
             auth.authenticationProvider(ap);
         }
     }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/public/**", "/webjars/**", "/resources/**", "/auth/authenticate").permitAll()
+                .antMatchers("/**").access("#oauth2.hasScope('ROLE_API_CLIENT')")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/authenticate")
+                .defaultSuccessUrl("/index")
+                .failureUrl("/login?error=1")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
+                .permitAll()
+                .and()
+                .rememberMe()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/error/403")
+        ;}
 
     /**
      * {@inheritDoc}

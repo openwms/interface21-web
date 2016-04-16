@@ -107,6 +107,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer
+                .allowFormAuthenticationForClients()
                 .tokenKeyAccess("isAnonymous() || hasAuthority('ROLE_API_CLIENT')")
                 .checkTokenAccess("permitAll()"/*"hasAuthority('ROLE_API_CLIENT')"*/)
                 .allowFormAuthenticationForClients();
