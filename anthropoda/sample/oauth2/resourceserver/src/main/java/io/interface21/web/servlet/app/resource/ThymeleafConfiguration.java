@@ -18,7 +18,6 @@ package io.interface21.web.servlet.app.resource;
 import javax.annotation.PostConstruct;
 
 import io.interface21.web.thyme.NestedClasspathResourceResolver;
-import org.ameba.http.AbstractMvcConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.template.TemplateLocation;
 import org.springframework.context.annotation.Bean;
