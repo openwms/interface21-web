@@ -15,20 +15,14 @@
  */
 package io.interface21.web.servlet.app.oauth2;
 
-import java.util.Properties;
-
 import org.ameba.annotation.ExcludeFromScan;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.HandlerMapping;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 
 /**
  * A AuthenticationProviderConfiguration.
@@ -42,20 +36,10 @@ import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 public class AuthenticationProviderConfiguration implements BeanFactoryAware {
 
     public static String authenticationUrl;
-    @Autowired
-    private RestTemplate restTemplate;
     private BeanFactory beanFactory;
 
-    public @Bean HandlerMapping authControllerHandlerMapping() {
-        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
-        Properties mappings = new Properties();
-        mappings.put("/auth/authenticate", "oAuth2AuthenticationController");
-        mapping.setMappings(mappings);
-        return mapping;
-    }
-
     public @Bean AuthenticationProvider httpAuthenticationProvider() {
-        HttpAuthenticationProvider ap = new HttpAuthenticationProvider(new DefaultAuthenticationDelegate(restTemplate, authenticationUrl));
+        HttpAuthenticationProvider ap = new HttpAuthenticationProvider(new DefaultAuthenticationDelegate(authenticationUrl));
         try {
             ap.setPasswordEncoder(beanFactory.getBean(PasswordEncoder.class));
         } catch (BeansException e) {

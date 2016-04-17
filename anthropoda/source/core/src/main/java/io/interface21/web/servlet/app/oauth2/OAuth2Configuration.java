@@ -55,8 +55,14 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter implements
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+                .httpBasic()
+                .and()
                 .authorizeRequests()
-                .antMatchers("/", "/public/**", "/webjars/**", "/resources/**", "/auth/authenticate").permitAll()
+                .antMatchers("/auth/authenticate").authenticated()
+                .anyRequest().authenticated()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/", "/public/**", "/webjars/**", "/resources/**").permitAll()
                 .antMatchers("/**").access("#oauth2.hasScope('ROLE_API_CLIENT')")
                 .anyRequest().authenticated()
                 .and()
@@ -75,6 +81,7 @@ public class OAuth2Configuration extends WebSecurityConfigurerAdapter implements
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/error/403")
+
         ;}
 
     /**

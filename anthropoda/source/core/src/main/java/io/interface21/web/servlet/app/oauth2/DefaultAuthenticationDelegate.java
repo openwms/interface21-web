@@ -42,8 +42,8 @@ class DefaultAuthenticationDelegate implements AuthenticationDelegate {
     private RestTemplate restTemplate;
     private String authenticationUrl;
 
-    public DefaultAuthenticationDelegate(RestTemplate restTemplate, String authenticationUrl) {
-        this.restTemplate = restTemplate;
+    public DefaultAuthenticationDelegate(String authenticationUrl) {
+        this.restTemplate = new RestTemplate();
         this.authenticationUrl = authenticationUrl;
     }
 

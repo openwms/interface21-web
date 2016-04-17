@@ -46,7 +46,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Value("signing-key:kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg")
     private String signingKey;
-
+/*
+    public @Bean
+    OAuth2AuthenticationController oAuth2AuthenticationController() {
+      return new OAuth2AuthenticationController();
+    }
+    public @Bean
+    HandlerMapping authControllerHandlerMapping() {
+        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+        Properties mappings = new Properties();
+        mapping.setOrder(Ordered.HIGHEST_PRECEDENCE + 1);
+        mappings.put("/auth/authenticate", oAuth2AuthenticationController());
+        mapping.setMappings(mappings);
+        return mapping;
+    }
+*/
     /**
      * Bean that is used as token converter between OAuth2 and JWT tokens. Cause of symmetric token encryption the signing key must be
      * shared between resource and authorization server.
