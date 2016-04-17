@@ -18,6 +18,7 @@ package io.interface21.web.servlet.app.resource;
 import java.util.Collections;
 
 import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
+import io.interface21.web.servlet.app.oauth2.OperationMode;
 import org.ameba.annotation.FilteredComponentScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -40,7 +41,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Configuration
 @EnableAutoConfiguration
 @FilteredComponentScan
-@EnableOAuth2(asResourceServer = true, asAuthorizationServer = true, authenticationProviderBean = "inMemProvider")
+@EnableOAuth2(mode = OperationMode.COMBINED, authenticationProviderBean = "inMemProvider")
 public class ServerApplication {
 
     public
