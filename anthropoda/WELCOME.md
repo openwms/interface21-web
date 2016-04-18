@@ -20,7 +20,8 @@
  From the users perspective view, Anthropoda only knows about one Java annotation
 
 ````
- @EnableOAuth2(mode = OperationMode.COMBINED, authenticationProviderBean = "inMemProvider")
+ @EnableOAuth2(mode = OperationMode.COMBINED,
+               authenticationProviderBean = "inMemProvider")
 ````
 
  This annotation can be used on the protected `ResourceServer` as well as on the `AuthorizationServer`. Even in an environment where both
@@ -29,11 +30,14 @@
  A `ResourceServer` may be configured this way ...
 
 ````
- @EnableOAuth2(mode = OperationMode.RESOURCES, authenticationUrl = "http://localhost:8083/auth/authenticate", authenticationProviderBean = "httpAuthenticationProvider")
+ @EnableOAuth2(mode = OperationMode.RESOURCES,
+               authenticationUrl = "http://localhost:8083/auth/authenticate",
+               authenticationProviderBean = "httpAuthenticationProvider")
 ````
 
  Whereas the AuthorizationServer counterpart is configure like this ...
 
 ````
- @EnableOAuth2(mode = OperationMode.AUTHORIZATIONS, authenticationProviderBean = "inMemProvider")
+ @EnableOAuth2(mode = OperationMode.AUTHORIZATIONS,
+               authenticationProviderBean = "inMemProvider")
 ````
