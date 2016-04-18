@@ -1,3 +1,5 @@
+Anthropodia is just _one_ web worm. Find more [here](../README)
+
 # Web Worms: Anthropoda
 
  The Anthropoda module eases the use and configuration of security in applications. It is built on top of Spring Security and pre-configures
