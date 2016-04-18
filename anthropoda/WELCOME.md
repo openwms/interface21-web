@@ -6,7 +6,7 @@
  framework that is complex by nature (like the base technology is). The Anthropoda component targets this problem, by restricting the options
  we have with OAuth2 to fit the most common use cases.
 
-## A. Basic Authentication
+## A. Http BASIC Authentication
 
  Support for BASIC authentication is not such important, like for OAuth2. By using the provided annotation does simple pre-configure the
  security chain so that all incoming requests to `/public/**` are accessible w/o authentication and a configured view resolver can resolve
