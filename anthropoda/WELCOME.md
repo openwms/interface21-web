@@ -18,9 +18,9 @@
 ## B. OAuth2 Authorization
 
  When you start implementing OAuth2 you need to know the basic vocabulary, the building blocks and responsibilities in addition to the
- OAuth2 authorization flows. This is a must-have for anyone who wants needs to work with OAuth2. Afterwards you'll probably search for some
- library that takes away the flow handling and is as easy to use. Applications that already rely on the Spring Framework will likely use the
- Spring Security OAuth2 module to achieve this.
+ OAuth2 authorization flows. This is a must-have for anyone who wants to work with OAuth2. Afterwards you'll probably search for some
+ library that takes away the flow handling and is easy to use. Applications that already rely on the Spring Framework will likely use the
+ [Spring Security OAuth](http://projects.spring.io/spring-security-oauth/) module to achieve this.
 
  What does Anthropoda do?
 
