@@ -14,4 +14,4 @@ A self-contained authentication module, including
 - a RESTful authentication service (Spring Web)
 - a SPI to customize authentication and authorization
 
-Find further information [here](./anthropoda/source/WELCOME.md)
+Find further information [here](./anthropoda/WELCOME.md)
