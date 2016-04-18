@@ -38,7 +38,14 @@ public class AuthenticationProviderConfiguration implements BeanFactoryAware {
     public static String authenticationUrl;
     private BeanFactory beanFactory;
 
-    public @Bean AuthenticationProvider httpAuthenticationProvider() {
+    /**
+     * This implementation provides an {@link HttpAuthenticationProvider HttpAuthenticationProvider}.
+     *
+     * @return An instance of HttpAuthenticationProvider
+     */
+    public
+    @Bean
+    AuthenticationProvider httpAuthenticationProvider() {
         HttpAuthenticationProvider ap = new HttpAuthenticationProvider(new DefaultAuthenticationDelegate(authenticationUrl));
         try {
             ap.setPasswordEncoder(beanFactory.getBean(PasswordEncoder.class));

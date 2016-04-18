@@ -29,5 +29,13 @@ import org.springframework.security.core.GrantedAuthority;
  */
 public interface AuthenticationDelegate {
 
+    /**
+     * An implementation should at least respond with the list of grants the user is granted too.
+     *
+     * @param username The username
+     * @param password The password
+     * @return A list of all granted authorities
+     * @throws Exception If any
+     */
     ResponseEntity<Collection<? extends GrantedAuthority>> authenticate(String username, char[] password);
 }
