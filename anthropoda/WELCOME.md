@@ -22,17 +22,17 @@
  library that takes away the flow handling and is easy to use. Applications that already rely on the Spring Framework will likely use the
  [Spring Security OAuth](http://projects.spring.io/spring-security-oauth/) module to achieve this.
 
- What does Anthropoda do?
+### What does Anthropoda do?
 
- From the users perspective view, Anthropoda only knows about one Java annotation
+ From an users perspective, Anthropoda only knows about one Java annotation
 
 ````
  @EnableOAuth2(mode = OperationMode.COMBINED,
                authenticationProviderBean = "inMemProvider")
 ````
 
- This annotation can be used on the protected `ResourceServer` as well as on the `AuthorizationServer`. Even in an environment where both
- components run combined or separated. The security endpoint configuration is still part of both.
+ This annotation is used on the protected `ResourceServer` as well as on the `AuthorizationServer`, even in an environment where both
+ components run combined or separated. The security endpoint configuration is still part of each part.
 
  A `ResourceServer` may be configured this way ...
 
