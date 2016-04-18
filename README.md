@@ -13,3 +13,5 @@ A self-contained authentication module, including
 - a lightweight login form UI widget (HTML5 Webcomponent)
 - a RESTful authentication service (Spring Web)
 - a SPI to customize authentication and authorization
+
+Find further information [here](./anthropoda/source/WELCOME.md)
