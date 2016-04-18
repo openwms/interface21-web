@@ -24,9 +24,9 @@ Anthropodia is just _one_ web worm. Find more [here](../README.md)
  library that takes away the flow handling and is easy to use. Applications that already rely on the Spring Framework will likely use the
  [Spring Security OAuth](http://projects.spring.io/spring-security-oauth/) module to achieve this.
 
-### What does Anthropoda do?
+### What does Anthropoda OAuth2 do?
 
- From an users perspective, Anthropoda only knows about one Java annotation
+ From an users perspective, Anthropoda OAuth2 only knows about one Java annotation
 
 ````
  @EnableOAuth2(mode = OperationMode.COMBINED,
