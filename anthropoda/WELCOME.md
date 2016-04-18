@@ -17,13 +17,23 @@
 
  What does Anthropoda do?
 
- From the users perspective view, Anthropoda knows only one Java annotation
+ From the users perspective view, Anthropoda only knows about one Java annotation
 
 ````
- @EnableOAuth2(..)
+ @EnableOAuth2(mode = OperationMode.COMBINED, authenticationProviderBean = "inMemProvider")
 ````
 
- This annotation can be used on the protected ResourceServer as well as on the AuthorizationServer. Even in an environment where both
+ This annotation can be used on the protected `ResourceServer` as well as on the `AuthorizationServer`. Even in an environment where both
  components run combined or separated. The security endpoint configuration is still part of both.
 
+ A `ResourceServer` may be configured this way ...
 
+````
+ @EnableOAuth2(mode = OperationMode.RESOURCES, authenticationUrl = "http://localhost:8083/auth/authenticate", authenticationProviderBean = "httpAuthenticationProvider")
+````
+
+ Whereas the AuthorizationServer counterpart is configure like this ...
+
+````
+ @EnableOAuth2(mode = OperationMode.AUTHORIZATIONS, authenticationProviderBean = "inMemProvider")
+````
