@@ -1,4 +1,4 @@
-Anthropodia is just _one_ web worm. Find more [here](../README)
+Anthropodia is just _one_ web worm. Find more [here](../README.md)
 
 # Web Worms: Anthropoda
 
