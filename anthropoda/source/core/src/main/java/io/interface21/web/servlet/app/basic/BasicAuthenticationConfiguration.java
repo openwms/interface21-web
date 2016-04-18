@@ -71,15 +71,15 @@ public class BasicAuthenticationConfiguration extends WebSecurityConfigurerAdapt
     public void configure(HttpSecurity http) {
         try {
             http
-                    .httpBasic()
-                    .and()
-                    .authorizeRequests()
-                    .antMatchers("/public/**").permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                    .formLogin()
-                    .loginPage("/public/auth/login")
-                    .authenticationDetailsSource(new AuthenticationDetailsSourceWithDomain())
+                .httpBasic()
+            .and()
+                .authorizeRequests()
+                .antMatchers("/public/**").permitAll()
+                .anyRequest().authenticated()
+            .and()
+                .formLogin()
+                .loginPage("/public/auth/login")
+                .authenticationDetailsSource(new AuthenticationDetailsSourceWithDomain())
             ;
         } catch (Exception e) {
             // TODO: 09/03/16

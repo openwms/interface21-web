@@ -8,6 +8,13 @@
 
 ## A. Basic Authentication
 
+ Support for BASIC authentication is not such important, like for OAuth2. By using the provided annotation does simple pre-configure the
+ security chain so that all incoming requests to `/public/**` are accessible w/o authentication and a configured view resolver can resolve
+ the login form under `/public/auth/login`.
+
+ Additionally an input field with name `j_Domain` is accepted to take the current login domain, or organization or context where an user
+ tries to login. This is important to provide in a multi-tenancy environment (domain authentication).
+
 ## B. OAuth2 Authorization
 
  When you start implementing OAuth2 you need to know the basic vocabulary, the building blocks and responsibilities in addition to the
