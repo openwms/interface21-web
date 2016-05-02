@@ -13,41 +13,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.interface21.web.servlet.app.resource;
+package io.interface21.web.servlet.app.authorization;
 
 import java.security.Principal;
 
-import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
-import io.interface21.web.servlet.app.oauth2.OperationMode;
-import org.ameba.annotation.FilteredComponentScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * A ResourceServerApplication.
+ * A AuthorizationServerApplication.
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
+ *
+ *
+ * curl acme:acmesecret@localhost:9999/uaa/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=http://example.com -d code=9zRVlY {"access_token":"2219199c-966e-4466-8b7e-12bb9038c9bb","token_type":"bearer","refresh_token":"d193caf4-5643-4988-9a4a-1c03c9d657aa","expires_in":43199,"scope":"openid"}
+ * curl acme:acmesecret@localhost:9999/uaa/oauth/token -d grant_type=authorization_code -d client_id=acme -d redirect_uri=http://example.com -d code=9zRVlY
  * @version 1.0
  * @since 1.0
  */
 @Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 @RestController
 @EnableResourceServer
-@FilteredComponentScan(basePackages = "io.interface21")
-@EnableOAuth2(mode = OperationMode.RESOURCES, authenticationUrl = "http://localhost:8083/auth/authenticate", authenticationProviderBean = "httpAuthenticationProvider")
-public class ResourceServerApplication {
+@EnableAuthorizationServer
+public class AuthorizationServerApplication {
 
-    @RequestMapping("/")
+    public static void main(String[] args) {
+        SpringApplication.run(AuthorizationServerApplication.class, args);
+    }
+
+    @RequestMapping("/user")
     public Principal user(Principal user) {
         return user;
     }
-
-    public static void main(String[] args) {
-        SpringApplication.run(ResourceServerApplication.class, args);
-    }
 }
+

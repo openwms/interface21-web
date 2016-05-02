@@ -15,35 +15,30 @@
  */
 package io.interface21.web.servlet.app.authorization;
 
-import java.util.Collections;
-
-import io.interface21.web.servlet.app.oauth2.EnableOAuth2;
-import io.interface21.web.servlet.app.oauth2.OperationMode;
 import org.ameba.annotation.FilteredComponentScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 /**
  * A AuthorizationServerApplication.
  *
  * @author <a href="mailto:scherrer@openwms.org">Heiko Scherrer</a>
+ *
+ *
+ *
+ * curl acme:acmesecret@localhost:9999/uaa/oauth/token  -d grant_type=authorization_code -d client_id=acme  -d redirect_uri=http://example.com -d code=jYWioI
  * @version 1.0
  * @since 1.0
  */
 @Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 @FilteredComponentScan
-@EnableOAuth2(mode = OperationMode.AUTHORIZATIONS, authenticationProviderBean = "inMemProvider")
+@EnableAuthorizationServer
+//@EnableOAuth2(mode = OperationMode.AUTHORIZATIONS/*, authenticationProviderBean = "inMemProvider"*/)
 public class AuthorizationServerApplication {
-
+/*
     public
     @Bean
     AuthenticationProvider inMemProvider() {
@@ -52,8 +47,9 @@ public class AuthorizationServerApplication {
         dap.setUserDetailsService(new InMemoryUserDetailsManager(Collections.singletonList(new User("user", "test", Collections.singletonList(new SimpleGrantedAuthority("API_CLIENT"))))));
         return dap;
     }
-
+*/
     public static void main(String[] args) {
         SpringApplication.run(AuthorizationServerApplication.class, args);
     }
 }
+
