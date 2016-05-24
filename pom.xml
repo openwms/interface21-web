@@ -74,9 +74,9 @@
     </dependencyManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/openwms/interface21-web.git</connection>
-        <developerConnection>scm:git:git@github.com:openwms/interface21-web.git</developerConnection>
-        <url>https://github.com/openwms/interface21-web</url>
+        <connection>scm:git:https://github.com/openwms/webworms.git</connection>
+        <developerConnection>scm:git:git@github.com:openwms/webworms.git</developerConnection>
+        <url>https://github.com/openwms/webworms</url>
         <tag>HEAD</tag>
     </scm>
 

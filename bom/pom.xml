@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.interface21</groupId>
     <artifactId>webworms-bom</artifactId>
-    <version>0.2</version>
+    <version>0.2-SNAPSHOT</version>
     <name>WEB WORMS BOM</name>
     <packaging>pom</packaging>
     <description>Interface21.io :: Web Worms :: BOM</description>
@@ -48,9 +48,9 @@
     </dependencyManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/openwms/interface21-web.git</connection>
-        <developerConnection>scm:git:git@github.com:openwms/interface21-web.git</developerConnection>
-        <url>https://github.com/openwms/interface21-web</url>
+        <connection>scm:git:https://github.com/openwms/webworms.git</connection>
+        <developerConnection>scm:git:git@github.com:openwms/webworms.git</developerConnection>
+        <url>https://github.com/openwms/webworms</url>
         <tag>HEAD</tag>
     </scm>
 
