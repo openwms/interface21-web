@@ -35,7 +35,6 @@ public interface AuthenticationDelegate {
      * @param username The username
      * @param password The password
      * @return A list of all granted authorities
-     * @throws Exception If any
      */
     ResponseEntity<Collection<? extends GrantedAuthority>> authenticate(String username, char[] password);
 }
