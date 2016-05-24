@@ -20,11 +20,7 @@ import java.security.Principal;
 import org.ameba.annotation.FilteredComponentScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.client.OAuth2ClientContext;
-import org.springframework.security.oauth2.client.OAuth2RestOperations;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,10 +47,11 @@ public class ClientApplication {
         return user;
     }
 
+    /*
     @Bean
     public OAuth2RestOperations restTemplate(OAuth2ClientContext oauth2ClientContext) {
         return new OAuth2RestTemplate(remote(), oauth2ClientContext);
-    }
+    }*/
 
     public static void main(String[] args) {
         SpringApplication.run(ClientApplication.class, args);
