@@ -95,7 +95,7 @@
     </pluginRepositories>
     <distributionManagement>
         <repository>
-            <id>bintray-ww</id>
+            <id>bintray</id>
             <url>https://api.bintray.com/maven/openwms/github/webworms</url>
         </repository>
     </distributionManagement>
