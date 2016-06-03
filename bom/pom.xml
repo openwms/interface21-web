@@ -71,7 +71,7 @@
         </repository>
         <repository>
             <id>bintray-ww</id>
-            <url>https://api.bintray.com/maven/openwms/github/webworms</url>
+            <url>http://api.bintray.com/maven/openwms/github/webworms</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>

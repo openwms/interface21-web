@@ -94,7 +94,7 @@
         </repository>
         <repository>
             <id>bintray</id>
-            <url>https://dl.bintray.com/abraxas/labs</url>
+            <url>http://dl.bintray.com/abraxas/labs</url>
         </repository>
     </repositories>
     <pluginRepositories>
