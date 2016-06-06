@@ -11,7 +11,7 @@
 
     <groupId>io.interface21</groupId>
     <artifactId>webworms</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3</version>
     <name>WEB WORMS</name>
     <packaging>pom</packaging>
     <description>Interface21.io :: Web Worms</description>
@@ -35,7 +35,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <ameba-lib.version>1.5</ameba-lib.version>
+        <ameba-lib.version>1.6.M1</ameba-lib.version>
 
         <maven-release-plugin.version>2.5</maven-release-plugin.version>
     </properties>
@@ -77,7 +77,7 @@
         <connection>scm:git:https://github.com/openwms/webworms.git</connection>
         <developerConnection>scm:git:git@github.com:openwms/webworms.git</developerConnection>
         <url>https://github.com/openwms/webworms</url>
-        <tag>HEAD</tag>
+        <tag>0.3</tag>
     </scm>
 
     <repositories>
