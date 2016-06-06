@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.interface21</groupId>
         <artifactId>anthropoda-pom</artifactId>
-        <version>0.4-SNAPSHOT</version>
+        <version>0.3-SNAPSHOT</version>
         <relativePath>../..</relativePath>
     </parent>
     <artifactId>anthropoda-thymeleaf-login</artifactId>

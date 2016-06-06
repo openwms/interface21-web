@@ -11,7 +11,7 @@
 
     <groupId>io.interface21</groupId>
     <artifactId>webworms</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <name>WEB WORMS</name>
     <packaging>pom</packaging>
     <description>Interface21.io :: Web Worms</description>
